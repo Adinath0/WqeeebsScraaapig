@@ -32,7 +32,7 @@ submit = form1.form_submit_button("Submit")
 process1=st.empty()
 process2=st.empty()
 process1.markdown("<h3 style='text-align:center;'>Demo of How The Website Works</h3>",unsafe_allow_html=True)
-process2.video("demo.webm")
+process2.video("demo.mp4")
 if submit:
   process2.text("")
   process1.text("")
