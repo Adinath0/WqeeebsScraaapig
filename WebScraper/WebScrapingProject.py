@@ -52,6 +52,8 @@ while submit:
           re_li=["Ltd.","Ltd","Limited","Private","Pvt.","Pvt","Llp"]
           for j in re_li:
             s=ret.title().replace(j,"")
+          s.strip()
+          s=s.split()
           s=s[:min(len(s),2)]
           s=" ".join(s)
           if(s not in all_stocks):
