@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-def zauba_func(data):
+def zauba_func(data,flag):
     chrome_options=Options()
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -117,4 +117,5 @@ def zauba_func(data):
               st.write(df3)
               st.write("<h2>Contacts</h2>",unsafe_allow_html=True)
               st.write(company_contact1,unsafe_allow_html=True)
-              
+              if(flag==1):
+                return company_name

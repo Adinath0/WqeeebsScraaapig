@@ -7,7 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-def tofler_func(data):
+
+def tofler_func(data,flag):
     chrome_options=Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
@@ -82,3 +83,6 @@ def tofler_func(data):
               st.write("Note: If all the values in table are 000000, means the data is kept confidential by the company.")
             except Exception:
               st.write("Company Finance not available")
+            finally:
+              if(flag==1):
+                return company_name

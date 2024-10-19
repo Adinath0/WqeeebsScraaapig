@@ -39,6 +39,7 @@ process2.video("demo.mp4")
 while submit:
   if(data=='Other Option' or data==''):
     data = form1.text_input("Enter company name here: ",)
+    
   else:
     process2.text("")
     process1.text("")
