@@ -48,18 +48,18 @@ while submit:
       st.write("Fetching details from "+comp)
       try:
         ret = tofler_func(data,flag)
-        if(flag==1):
-          re_li=["Ltd.","Ltd","Limited","Private","Pvt.","Pvt","Llp"]
-          for j in re_li:
-            s=ret.title().replace(j,"")
-          s.strip()
-          s=s.split()
-          s=s[:min(len(s),2)]
-          s=" ".join(s)
-          if(s not in all_stocks):
-            f=open("auto_data.txt","a")
-            f.write(s+"\n")
-            f.close()
+        # if(flag==1):
+        #   re_li=["Ltd.","Ltd","Limited","Private","Pvt.","Pvt","Llp"]
+        #   for j in re_li:
+        #     s=ret.title().replace(j,"")
+        #   s.strip()
+        #   s=s.split()
+        #   s=s[:min(len(s),2)]
+        #   s=" ".join(s)
+        #   if(s not in all_stocks):
+        #     f=open("auto_data.txt","a")
+        #     f.write(s+"\n")
+        #     f.close()
       except Exception:
         st.write("""The site landed onto an error while handling the request.
                     Kindly search again.
@@ -70,14 +70,14 @@ while submit:
       st.write("Fetching details from "+comp)
       try:
         ret = zauba_func(data,flag)
-        if(flag==1):
-          re_li=["Ltd.","Ltd","Limited","Private","Pvt.","Pvt"]
-          for j in re_li:
-            s=ret.title().replace(j,"")
-          if(s not in all_stocks):
-            f=open("auto_data.txt","a")
-            f.write(s+"\n")
-            f.close()
+        # if(flag==1):
+        #   re_li=["Ltd.","Ltd","Limited","Private","Pvt.","Pvt"]
+        #   for j in re_li:
+        #     s=ret.title().replace(j,"")
+        #   if(s not in all_stocks):
+        #     f=open("auto_data.txt","a")
+        #     f.write(s+"\n")
+        #     f.close()
       except Exception:
         st.write("""The site landed onto an error while handling the request.
                     Kindly search again.

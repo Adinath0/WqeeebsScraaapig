@@ -63,3 +63,4 @@ def tofler_func(data):
     df.index=df.index+1
     st.write(df)
     st.write("Note: If all the values in table are 000000, means the data is kept confidential by the company.")
+    

@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+from IPython.display import Image,display
 
 def tofler_func(data,flag):
     chrome_options=Options()
@@ -74,13 +75,43 @@ def tofler_func(data,flag):
               table_ele = driver.find_element(By.XPATH,'//*[@id="financial-details-financial-tab"]/div/table/tbody')
               rows=table_ele.find_elements(By.TAG_NAME,'tr')
               table_data=[]
-              for row in rows:
+              for row in rows[:len(rows)-1]:
                 row_data=[cell.text for cell in row.find_elements(By.TAG_NAME,'td')]
-                table_data.append(row_data)
-              df=pd.DataFrame(table_data,columns=['Topic','Value'])
+                sec_td=row.find_elements(By.TAG_NAME,'td')[1]
+
+                try:
+                  print('A')
+                  sec_td=row.find_elements(By.TAG_NAME,'td')[1]
+                  print('B')
+                  sec_v = sec_td.find_element(By.TAG_NAME,'i')
+                  print('C')
+                  class_val = sec_v.get_attribute('class').split()
+                  print(class_val)
+                  if 'fa-caret-up' in class_val:
+                    row_data.append('<img src="positive.png">')
+                  elif 'fa-caret-down' in class_val:
+                    row_data.append('<img src="negative.png">')
+                except Exception:
+                  print("D")
+                  row_data.append('')
+                finally:
+                  print("E")
+                  table_data.append(row_data)
+                  continue
+              print(table_data)
+              df=pd.DataFrame(table_data,columns=['Topic','Value','Profit or Loss'])
               df.index=df.index+1
-              st.write(df)
-              st.write("Note: If all the values in table are 000000, means the data is kept confidential by the company.")
+              print(df["Value"])
+              c2=0
+              #st.write(df,unsafe_allow_html=True)
+              for i in df["Value"]:
+                if(i=='000000'):
+                  c2+=1
+              if(c2==0):
+                st.write(df,unsafe_allow_html=True)
+              else:
+                st.write("Table not made public on the website by the company")
+              #st.write("Note: If all the values in table are 000000, means the data is kept confidential by the company.")
             except Exception:
               st.write("Company Finance not available")
             finally:
