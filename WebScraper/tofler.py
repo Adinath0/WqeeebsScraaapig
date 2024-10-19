@@ -78,7 +78,7 @@ def tofler_func(data,flag):
               for row in rows[:len(rows)-1]:
                 row_data=[cell.text for cell in row.find_elements(By.TAG_NAME,'td')]
                 sec_td=row.find_elements(By.TAG_NAME,'td')[1]
-
+                
                 try:
                   print('A')
                   sec_td=row.find_elements(By.TAG_NAME,'td')[1]
